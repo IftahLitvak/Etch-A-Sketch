@@ -21,15 +21,23 @@
     </div>
     <div class="main">
         <div class="settings">
-            <input class="color-select" type="color" value="#333333">
-            <button class="mode-color">Color Mode</button>
-            <button class="mode-rgb">Multi Colored Mode</button>
-            <button class="eraser">Eraser</button>
-            <button class="clear">Clear Grid</button>
-            <button class="show-grid">Show Grid Lines</button>
-            <div class="size-slider">
-                <div class="size">16 X 16</div>
-                <input class="slider" type="range" value="16" min="4" max="100" />
+            <div class="left">
+                <button class="mode-rgb">Multi Colored Mode</button>
+                <button class="shading">Shading Mode</button>
+                <button class="lighten">Lighten Mode</button>
+                <button class="eraser">Eraser</button>
+            </div>
+            <div class="right">
+                <div class="color-section">
+                    <input class="color-select" type="color" value="#333333">
+                    <button class="mode-color">Color Mode</button>
+                </div>
+                <button class="clear">Clear Grid</button>
+                <button class="show-grid">Show Grid Lines</button>
+                <div class="size-slider">
+                    <div class="size">16 X 16</div>
+                    <input class="slider" type="range" value="16" min="4" max="100" />
+                </div>
             </div>
         </div>
         <div class="grid-container"></div>

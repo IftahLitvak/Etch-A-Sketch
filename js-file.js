@@ -30,6 +30,8 @@ const sizeText = document.querySelector('.size');
 const sizeSlider = document.querySelector('.slider');
 const eraserBtn = document.querySelector('.eraser');
 const showGridBtn = document.querySelector('.show-grid');
+const shadingBtn = document.querySelector('.shading');
+const lightenBtn = document.querySelector('.lighten');
 
 // Sending to the appropriate function according to which button was pressed
 clearBtn.onclick = () => clearGrid();
@@ -40,25 +42,13 @@ sizeSlider.onmousemove = (e) => {
 sizeSlider.onchange = (e) => changeGridSize(e.target.value);
 colorModeBtn.onclick = () => {currentMode = 'color'; changeModesAtr();};
 rgbModeBtn.onclick = () => {currentMode = 'rgb'; changeModesAtr();};
-eraserBtn.onclick = () => {currentMode='eraser'; changeModesAtr();};
+eraserBtn.onclick = () => {currentMode = 'eraser'; changeModesAtr();};
+shadingBtn.onclick = () => {currentMode = 'shading'; changeModesAtr();};
+lightenBtn.onclick = () => {currentMode = 'lighten'; changeModesAtr();};
+
 showGridBtn.onclick = () => {currentGridLines = !currentGridLines; changeGridLinesAtr();};
 
 // Functions:
-function changeGridLinesAtr(){
-    const gridItem = document.querySelectorAll('.grid-item');
-    if (currentGridLines){
-        showGridBtn.classList.add('pressed');
-        gridItem.forEach(item => item.classList.add('include-border'));
-        showGridBtn.textContent = 'Delete Grid Lines';
-    }
-    else {
-        showGridBtn.classList.remove('pressed');
-        gridItem.forEach(item => item.classList.remove('include-border'));
-        showGridBtn.textContent = 'Show Grid Lines';
-    }
-    
-}
-
 function setGrid(size){
     gridContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     gridContainer.style.gridTemplateRows = `repeat(${size}, 1fr)`;
@@ -77,32 +67,52 @@ function changeGridSize(newSize){
     clearGrid();
 }
 
+function changeGridLinesAtr(){
+    const gridItem = document.querySelectorAll('.grid-item');
+    if (currentGridLines){
+        showGridBtn.classList.add('pressed');
+        gridItem.forEach(item => item.classList.add('include-border'));
+        showGridBtn.textContent = 'Delete Grid Lines';
+    }
+    else {
+        showGridBtn.classList.remove('pressed');
+        gridItem.forEach(item => item.classList.remove('include-border'));
+        showGridBtn.textContent = 'Show Grid Lines';
+    }
+    
+}
+
 function setItemColor(e) {
     if(!mouseClicked && e.type == 'mouseover'){
         /* The grid color won't change if the user released the mouse button 
         and the "mouseover" event was the one who sent him to this function */
         return;
     }
-    if (currentMode == 'color'){
-        e.target.style.backgroundColor = currentColor;
+    switch (currentMode){
+        case 'color':
+            e.target.style.backgroundColor = currentColor;
+            break;
+        case 'rgb':
+            let randomR = Math.floor(Math.random() * 256);
+            let randomG = Math.floor(Math.random() * 256);
+            let randomB = Math.floor(Math.random() * 256);
+            e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+            break;
+        case 'eraser':
+            e.target.style.backgroundColor =  `rgb(255, 255, 255)`;
+            break;
     }
-    else if (currentMode == 'rgb'){
-        let randomR = Math.floor(Math.random() * 256);
-        let randomG = Math.floor(Math.random() * 256);
-        let randomB = Math.floor(Math.random() * 256);
-        e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
-    }
-    else if (currentMode == 'eraser'){
-        e.target.style.backgroundColor =  `rgb(255, 255, 255)`;
-    }
+    
 }
 
 function changeModesAtr(){
     colorModeBtn.classList.remove('pressed');
     rgbModeBtn.classList.remove('pressed');
     eraserBtn.classList.remove('pressed');
+    shadingBtn.classList.remove('pressed');
+    lightenBtn.classList.remove('pressed');
 
-    switch(currentMode){
+    switch (currentMode){
         case 'color':
             colorModeBtn.classList.add('pressed');
             break;
@@ -111,6 +121,12 @@ function changeModesAtr(){
             break;
         case 'eraser':
             eraserBtn.classList.add('pressed');
+            break;
+        case 'shading':
+            shadingBtn.classList.add('pressed');
+            break;
+        case 'lighten':
+            lightenBtn.classList.add('pressed');
             break;
     }
 }
