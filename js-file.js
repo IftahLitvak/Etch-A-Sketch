@@ -106,4 +106,5 @@ function clearGrid() {
 
 window.onload = () => {
     setGrid(currentSize);
+    changeModesAtr();
 }
