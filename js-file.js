@@ -2,12 +2,15 @@
 const DEFAULT_COLOR = '#333333';
 const DEFAULT_SIZE = 16;
 const DEFAULT_MODE = 'color';
+const DEFAULT_LINES = false;
 
 // Current Values:
 let currentColor = DEFAULT_COLOR;
 let currentSize = DEFAULT_SIZE;
 let currentMode = DEFAULT_MODE;
+let currentGridLines = DEFAULT_LINES;
 let mouseClicked = false;
+
 
 // Checking if the user pressed the mouse and if he released it
 document.body.onmousedown = () => {
@@ -26,6 +29,7 @@ const clearBtn = document.querySelector('.clear');
 const sizeText = document.querySelector('.size');
 const sizeSlider = document.querySelector('.slider');
 const eraserBtn = document.querySelector('.eraser');
+const showGridBtn = document.querySelector('.show-grid');
 
 // Sending to the appropriate function according to which button was pressed
 clearBtn.onclick = () => clearGrid();
@@ -37,8 +41,24 @@ sizeSlider.onchange = (e) => changeGridSize(e.target.value);
 colorModeBtn.onclick = () => {currentMode = 'color'; changeModesAtr();};
 rgbModeBtn.onclick = () => {currentMode = 'rgb'; changeModesAtr();};
 eraserBtn.onclick = () => {currentMode='eraser'; changeModesAtr();};
+showGridBtn.onclick = () => {currentGridLines = !currentGridLines; changeGridLinesAtr();};
 
 // Functions:
+function changeGridLinesAtr(){
+    const gridItem = document.querySelectorAll('.grid-item');
+    if (currentGridLines){
+        showGridBtn.classList.add('pressed');
+        gridItem.forEach(item => item.classList.add('include-border'));
+        showGridBtn.textContent = 'Delete Grid Lines';
+    }
+    else {
+        showGridBtn.classList.remove('pressed');
+        gridItem.forEach(item => item.classList.remove('include-border'));
+        showGridBtn.textContent = 'Show Grid Lines';
+    }
+    
+}
+
 function setGrid(size){
     gridContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     gridContainer.style.gridTemplateRows = `repeat(${size}, 1fr)`;
@@ -102,6 +122,7 @@ function setColor(newColor) {
 function clearGrid() {
     gridContainer.innerHTML = '';
     setGrid(currentSize);
+    changeGridLinesAtr();
 }
 
 window.onload = () => {

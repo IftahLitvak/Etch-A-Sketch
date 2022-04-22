@@ -102,6 +102,11 @@ input[type='color']:active {
   transform: scale(1);
 }
 
+.include-border {
+    border-width: 1px;
+    border-style: solid;
+}
+
 input[type='color'] {
     -webkit-appearance: none;
     width: 80px;
