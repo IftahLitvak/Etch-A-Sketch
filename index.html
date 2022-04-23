@@ -18,6 +18,9 @@
     <script src="js-file.js" defer></script>
     <div class="header">
         <div class="header-title">Etch A Sketch</div>
+        <div class="header-context">Welcome to Etch A Sketch! This is a drawing game with a variety of drawing functions, down below at the bottom of the page is a short
+            description about each button, if you are having issues understanding what each button does you are welcome to read it.
+        </div>
     </div>
     <div class="main">
         <div class="settings">
@@ -26,6 +29,7 @@
                     <div class="bg-color-text">Background Color</div>
                     <input class="bg-color-select" type="color" value="#ffffff">
                 </div>
+                <button class="draw-mode">Hold Mouse Clicked</button>
                 <button class="mode-rgb">Multi Colored Mode</button>
                 <button class="shading">Shading Mode</button>
                 <button class="lighten">Lighten Mode</button>
@@ -48,7 +52,28 @@
         <div class="grid-container"></div>
     </div>
     <div class="footer">
-        <div class="copy-rights">Created By Iftah Litvak</div>
+        <ul>
+            <li><span class='footer-context-title'>Hold Mouse Clicked -</span> by default the drawing method is set to 'Hold Mouse Clicked' which means you need to press the mouse
+                and hold for drawing, release the mouse button to stop. When th drawing method is set to 'Click Draw and Click' it means you 
+                need to press the mouse button (and release it), then draw and press the mouse button again to stop.
+            </li>
+            <li><span class='footer-context-title'>Multi Colored Mode -</span> Pressing this will make your drawing be colorfull.</li>
+            <li><span class='footer-context-title'>Shading Mode -</span> Pressing this will make you shade each grid square you draw.</li>
+            <li><span class='footer-context-title'>Lighten Mode -</span> Pressing this will make you lighten each grid square you draw.</li>
+            <li><span class='footer-context-title'>Eraser -</span> Pressing this will make you able to erase grid squars that you draw (they will be colored in the background color).</li>
+            <li><span class='footer-context-title'>Clear Grid -</span> Pressing this will remove everything you draw.</li>
+            <li><span class='footer-context-title'>Show Grid Lines -</span> Pressing this will make the grid square borders show up.</li>
+            <li><span class='footer-context-title'>Size Slider -</span> You can change the size of the grid by moving the slider.</li>
+            <li><span class='footer-context-title'>Color Mode -</span> Pressing this will make you draw reguraly with a color to your choice.</li>
+            <li><span class='footer-context-title'>Background Color & Pen Color -</span> Changing the background color will change the color of your grid background and changing the pen 
+                color will make you able to draw in 'Color Mode' with your chosen color.
+            </li>
+        </ul>
+        <div class="footer-copy-rights">
+            <div class="copy-rights">Created By Iftah Litvak
+            <a href="https://github.com/IftahLitvak"><img class="git-icon" src = "git-icon.svg" alt="My GitHub Profile"/></a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

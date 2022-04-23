@@ -5,11 +5,43 @@ body {
     align-items: center;
 }
 
+.header-context {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
 
+ul {
+    list-style-type: none;
+    padding: 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.footer-context-title {
+    font-weight: 800;
+}
+
+.git-icon {
+    width: 14px;
+    height: auto;
+    margin-left: 8px;
+}
+
+.git-icon:hover {
+  transition: transform 0.09s ease-in-out;
+  transform: scale(1.45);
+}
+
+.git-icon:active {
+  transition: transform 0.05s ease-in-out;
+  transform: scale(1);
+}
 
 .header {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 10px;
     
 }
 
@@ -213,7 +245,10 @@ input[type='range']::-webkit-slider-thumb {
 .footer {
     display: flex;
     justify-content: center;
-    padding-top: 40px;
+    padding-top: 30px;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
 }
 
 .copy-rights {
